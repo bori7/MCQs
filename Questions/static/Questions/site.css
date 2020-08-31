@@ -41,7 +41,7 @@ input[name=message] {
 }
 .assignment_list {
     width: 80%;
-     height: 80%;
+    height: 80%;
     text-align: left;
     padding-right: 15px;
     font-size: 20px;
@@ -54,6 +54,7 @@ input[name=message] {
     margin: 0;
     overflow: auto;
     font-size: 20px;
+    font-weight: 60;
     line-height: 20px;
     background: #efefef;
     border: 1px solid #777;
