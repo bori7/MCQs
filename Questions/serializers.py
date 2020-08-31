@@ -42,7 +42,7 @@ class GradedAssignmentSerializer(serializers.ModelSerializer):
         for key, value in data.items():
             if key != 'csrfmiddlewaretoken':
                 answer[key] = value
-        #print(answer)         
+        print(answer)         
 
         questions = [q for q in assignment.questions.all()]
         
