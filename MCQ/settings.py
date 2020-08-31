@@ -27,7 +27,7 @@ SECRET_KEY = 'pdmx!99$etbl=znuqdov2-6kj)wk!5ov%0fu5hw!x!n32l^0=='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','mcq2020.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','mcq2020.herokuapp.com']
 
 # Application definition
 
