@@ -42,14 +42,16 @@ class GradedAssignmentSerializer(serializers.ModelSerializer):
         for key, value in data.items():
             if key != 'csrfmiddlewaretoken':
                 answer[key] = value
-        print(answer)         
-
-        questions = [q for q in assignment.questions.all()]
+        #print(answer)         
         
+        questions = [q for q in assignment.questions.all()]
+        #print(len(questions))
+        ans = [questions[i].answer.title for i in range(0,10)]
+        #print(ans)
         correct = 0
 
         for k, v in answer.items():
-            if answer[k] == questions[int(k)-1].answer.title:
+            if answer[k] == ans[int(k)-1]:
                 correct += 1
 
         grade = ((correct * 5) / 50)*100
