@@ -20,7 +20,7 @@ class AssignmentViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         queryset1 = Assignment.objects.all()
         serializer1 = AssignmentSerializer(queryset1, many=True)
-        queryset2 = Question.objects.all()
+        queryset2 = Question.objects.order_by('order')
         #questions = [q for q in assignment.questions.all()]
         serializer2 = QuestionSerializer(queryset2, many=True)
         
