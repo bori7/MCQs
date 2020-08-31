@@ -1,0 +1,15 @@
+{% extends "Questions/layout.html" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    <h2>Welcome</h2>
+
+    <p>Pls read the questions carefully before answering<p>
+    <br/>
+    <p>Attempt all Questions<p>
+
+   <br/>
+    <p YOU have 5 minutes for the assessment.<p/>  <a href="{% url 'assignments-list' %}">Click to start</a>.</p>
+    
+{% endblock %}

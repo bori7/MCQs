@@ -1,0 +1,45 @@
+{% extends "Questions/layout.html" %}
+{% block title %}
+    ASSiGNMENT
+{% endblock %}
+{% block content %}
+    <h1>Multiple Choice Questions</h1>
+
+    {% if assignment_list %}
+        <div class="assignment_list">
+            
+            {% for assignment in assignment_list %}
+                
+                    <h2>{{ assignment.title}}</h2>
+                    
+                    <pre class = "prestuff">{{ assignment.story }}</pre>
+                    
+               
+            {% endfor %}
+            {% comment %} {{question_list}} {% endcomment %}
+
+            <form method="POST" class="log-form" action="{% url 'gradedassignments-list' %}">
+                {% csrf_token %}
+                {% for question in question_list %}
+                
+                    <h2>{{ question.order}}. {{ question.question}}</h2>
+                    {% for choice in question.choices %}
+
+                        <input type="radio" id={{forloop.counter}} name={{question.order}} value={{choice}}>
+                        <label for={{forloop.counter}}>{{choice}}</label><br>
+
+                        <br>  
+                    {% endfor %}
+                
+            
+            {% endfor %}
+
+            <input type="submit" value="Submit">
+            </form>
+
+        </div>
+    {% else %}
+        <p>No Assigments Yet.</p>
+    {% endif %}
+
+{% endblock %}

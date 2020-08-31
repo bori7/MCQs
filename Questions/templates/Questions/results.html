@@ -1,0 +1,26 @@
+{% extends "Questions/layout.html" %}
+{% block title %}
+    Results
+{% endblock %}
+{% block content %}
+
+     <h1>Results</h1>
+
+    {% if result_list %}
+        <div class="result_list">
+
+
+            <h1>{{ result_list.assignment}}</h1>
+            <h2>{{ result_list.grade}}%</h2>
+            {% if result_list.grade >= 75%}
+            <h3>Congrats, You passed</h3>
+            {% else %}
+            <p>Sorry, you failed. Pls, try again.</p>
+            {% endif %}
+           
+        </div>
+    {% else %}
+        <p>No Results Yet.</p>
+    {% endif %}
+
+{% endblock %}
