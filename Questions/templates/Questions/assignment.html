@@ -4,7 +4,9 @@
 {% endblock %}
 {% block content %}
     <h1>Multiple Choice Questions</h1>
-
+    <h3>Time Left:
+    <div id = "demo"> </div>
+    </h3>
     {% if assignment_list %}
         <div class="assignment_list">
             
@@ -18,7 +20,7 @@
             {% endfor %}
             {% comment %} {{question_list}} {% endcomment %}
 
-            <form method="POST" class="log-form" action="{% url 'gradedassignments-list' %}">
+            <form method="POST" id = "quiz-form" class="log-form" action="{% url 'gradedassignments-list' %}">
                 {% csrf_token %}
                 {% for question in question_list %}
                 
@@ -43,3 +45,26 @@
     {% endif %}
 
 {% endblock %}
+
+
+{% block extra_scripts %}
+<script> 
+var deadline = new Date("Aug 31, 2020 8:40:00").getTime(); 
+var form = document.getElementById('quiz-form');
+var x = setInterval(function() { 
+    var now = new Date().getTime(); 
+    var t = deadline - now; 
+    var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+    var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+    var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+    var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+    document.getElementById("demo").innerHTML = days + "d "  
+    + hours + "h " + minutes + "m " + seconds + "s "; 
+        if (t < 0) { 
+            clearInterval(x); 
+            form.submit();
+            document.getElementById("demo").innerHTML = "EXPIRED"; 
+        } 
+}, 1000); 
+</script> 
+{% endblock extra_scripts %}
