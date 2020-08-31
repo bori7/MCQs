@@ -27,14 +27,15 @@
                     <h2>{{ question.order}}. {{ question.question}}</h2>
                     {% for choice in question.choices %}
 
-                        <input type="radio" id={{forloop.counter}} name={{question.order}} value={{choice}}>
-                        <label for={{forloop.counter}}>{{choice}}</label><br>
+                        <input type='radio' id={{forloop.counter}}{{question.order}} name={{question.order}} value={{choice}}>
+                        <label for={{forloop.counter}}{{question.order}}>{{choice}}</label>
+                        <br>
 
                         <br>  
                     {% endfor %}
                 
             
-            {% endfor %}
+                {% endfor %}
 
             <input type="submit" value="Submit">
             </form>
